@@ -8,7 +8,7 @@
 Summary:	A library for parsing and evaluating OSM opening hours expressions
 Name:		ka5-%{kaname}
 Version:	22.04.3
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -18,6 +18,7 @@ BuildRequires:	Qt5Core-devel >= 5.15.2
 BuildRequires:	Qt5Network-devel >= 5.15.2
 BuildRequires:	Qt5Qml-devel
 BuildRequires:	bison
+BuildRequires:	boost-python3-devel
 BuildRequires:	cmake
 BuildRequires:	flex
 BuildRequires:	gettext-devel
@@ -54,6 +55,8 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 
 %prep
 %setup -q -n %{kaname}-%{version}
+# correct python components install dir
+sed -i "s:set(_install_dir lib:set(_install_dir %{_libdir}:g" PyKOpeningHours/CMakeLists.txt
 
 %build
 install -d build
@@ -92,6 +95,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/qml/org/kde/kopeninghours/libkopeninghoursqmlplugin.so
 %attr(755,root,root) %{_libdir}/qt5/qml/org/kde/kopeninghours/qmldir
 %{_datadir}/qlogging-categories5/org_kde_kopeninghours.categories
+%{py3_sitedir}/PyKOpeningHours/PyKOpeningHours.pyi
+%attr(755,root,root) %{py3_sitedir}/PyKOpeningHours/PyKOpeningHours.so
+%{py3_sitedir}/PyKOpeningHours/__init__.py
 
 %files devel
 %defattr(644,root,root,755)
