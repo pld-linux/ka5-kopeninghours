@@ -8,7 +8,7 @@
 Summary:	A library for parsing and evaluating OSM opening hours expressions
 Name:		ka5-%{kaname}
 Version:	22.04.3
-Release:	2
+Release:	3
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -95,6 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/qml/org/kde/kopeninghours/libkopeninghoursqmlplugin.so
 %attr(755,root,root) %{_libdir}/qt5/qml/org/kde/kopeninghours/qmldir
 %{_datadir}/qlogging-categories5/org_kde_kopeninghours.categories
+%dir %{py3_sitedir}/PyKOpeningHours
 %{py3_sitedir}/PyKOpeningHours/PyKOpeningHours.pyi
 %attr(755,root,root) %{py3_sitedir}/PyKOpeningHours/PyKOpeningHours.so
 %{py3_sitedir}/PyKOpeningHours/__init__.py
