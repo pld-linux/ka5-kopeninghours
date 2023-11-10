@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.08.2
+%define		kdeappsver	23.08.3
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kopeninghours
 Summary:	A library for parsing and evaluating OSM opening hours expressions
 Name:		ka5-%{kaname}
-Version:	23.08.2
+Version:	23.08.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	564d8ddc84af255bcba5fb16765720ef
+# Source0-md5:	21eb3c7611b792d49e94073b3418edc2
 URL:		https://community.kde.org/
 BuildRequires:	Qt5Core-devel >= 5.15.2
 BuildRequires:	Qt5Network-devel >= 5.15.2
