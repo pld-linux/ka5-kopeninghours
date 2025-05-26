@@ -8,11 +8,12 @@
 Summary:	A library for parsing and evaluating OSM opening hours expressions
 Name:		ka5-%{kaname}
 Version:	23.08.5
-Release:	5
+Release:	6
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
 # Source0-md5:	6ff044dc9014c6f78ec27afccd5d8533
+Patch0:		boost-includes.patch
 URL:		https://community.kde.org/
 BuildRequires:	Qt5Core-devel >= 5.15.2
 BuildRequires:	Qt5Network-devel >= 5.15.2
@@ -55,6 +56,8 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 
 %prep
 %setup -q -n %{kaname}-%{version}
+%patch -P0 -p1
+
 # correct python components install dir
 sed -i "s:set(_install_dir lib:set(_install_dir %{_libdir}:g" PyKOpeningHours/CMakeLists.txt
 
